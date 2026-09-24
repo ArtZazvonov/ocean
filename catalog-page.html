@@ -3,32 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Оптовый каталог рыбы и морепродуктов — Ocean B2B</title>
+    <title>Каталог продукции — Ocean</title>
     <style>
         :root {
-            --primary: #004b87;
-            --primary-dark: #003366;
-            --primary-light: #e8f1f8;
-            --primary-gradient: linear-gradient(135deg, #003870 0%, #0056a3 55%, #0284c7 100%);
-            --accent: #f25a24;
-            --accent-hover: #e04a16;
-            --accent-light: #fff2ed;
-            --success: #16a34a;
-            --success-light: #dcfce7;
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --text-subtle: #64748b;
+            --primary: #0052a3;
+            --primary-dark: #003d7a;
+            --primary-light: #e8f1fa;
+            --accent: #ff6b35;
+            --accent-hover: #fa5719;
+            --text-main: #1a2530;
+            --text-muted: #5c6c7c;
             --bg-page: #f8fafc;
             --bg-card: #ffffff;
             --border: #e2e8f0;
-            --border-hover: #cbd5e1;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 16px -2px rgba(0, 50, 100, 0.08);
-            --shadow-lg: 0 12px 32px -4px rgba(0, 50, 100, 0.12);
-            --radius-sm: 6px;
-            --radius-md: 10px;
-            --radius-lg: 16px;
-            --radius-full: 9999px;
+            --radius: 10px;
         }
 
         * {
@@ -38,68 +26,16 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: var(--text-main);
             background: var(--bg-page);
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            padding-bottom: 70px; /* space for fixed specification bar */
         }
 
         .container {
-            max-width: 1380px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Top Bar */
-        .top-bar {
-            background: #002b54;
-            color: #dbeafe;
-            font-size: 13px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding: 8px 0;
-        }
-
-        .top-bar-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .top-info-group {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .badge-1c {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(34, 197, 94, 0.18);
-            color: #86efac;
-            padding: 2px 8px;
-            border-radius: var(--radius-full);
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .badge-1c-dot {
-            width: 7px;
-            height: 7px;
-            background: #22c55e;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .top-contact-link {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
+            padding: 0 20px;
         }
 
         /* Header */
@@ -108,8 +44,7 @@
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow-sm);
+            z-index: 50;
         }
 
         .header-inner {
@@ -117,272 +52,120 @@
             justify-content: space-between;
             align-items: center;
             padding: 16px 0;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .logo-icon {
+            font-size: 26px;
+        }
+
+        nav.nav-links {
+            display: flex;
+            align-items: center;
             gap: 24px;
         }
 
-        .logo-wrap {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        nav.nav-links a {
+            color: var(--text-main);
             text-decoration: none;
-        }
-
-        .logo-symbol {
-            width: 44px;
-            height: 44px;
-            background: var(--primary-gradient);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            font-size: 24px;
-            box-shadow: 0 4px 10px rgba(0, 75, 135, 0.25);
-        }
-
-        .logo-texts {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-title {
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--primary-dark);
-            letter-spacing: -0.5px;
-            line-height: 1.1;
-        }
-
-        .logo-tagline {
-            font-size: 12px;
-            color: var(--text-subtle);
+            font-size: 14px;
             font-weight: 500;
         }
 
-        nav.main-nav {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        nav.main-nav a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.2s;
-            padding: 6px 0;
-        }
-
-        nav.main-nav a:hover,
-        nav.main-nav a.active {
+        nav.nav-links a.active {
             color: var(--primary);
-        }
-
-        nav.main-nav a.active {
-            border-bottom: 2px solid var(--primary);
+            font-weight: 700;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 10px 18px;
-            border-radius: var(--radius-sm);
+            padding: 9px 18px;
+            border-radius: var(--radius);
             font-size: 14px;
             font-weight: 600;
             text-decoration: none;
             cursor: pointer;
             border: 1px solid transparent;
             transition: all 0.2s;
-            white-space: nowrap;
         }
 
         .btn-primary {
             background: var(--accent);
             color: #ffffff;
-            box-shadow: 0 2px 8px rgba(242, 90, 36, 0.25);
         }
 
         .btn-primary:hover {
             background: var(--accent-hover);
         }
 
-        .btn-pres {
-            background: #f8fafc;
-            color: var(--primary);
-            border-color: var(--border);
-            font-size: 13px;
-        }
-
-        .btn-pres:hover {
+        .btn-secondary {
             background: var(--primary-light);
-        }
-
-        /* 1C Status Banner */
-        .sync-banner {
-            background: #f0fdf4;
-            border-bottom: 1px solid #bbf7d0;
-            padding: 10px 0;
-            font-size: 13px;
-            color: #166534;
-        }
-
-        .sync-banner-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .sync-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-weight: 600;
-        }
-
-        /* Breadcrumbs */
-        .breadcrumb {
-            padding: 14px 0;
-            font-size: 13px;
-            color: var(--text-subtle);
-        }
-
-        .breadcrumb a {
             color: var(--primary);
-            text-decoration: none;
-            margin-right: 6px;
         }
 
-        .breadcrumb a:hover {
-            text-decoration: underline;
-        }
-
-        /* Page Header */
+        /* Page Title */
         .page-header {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 24px 30px;
-            margin-bottom: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
+            padding: 30px 0 20px;
         }
 
-        .page-header-text h1 {
+        .page-header h1 {
             font-size: 28px;
-            font-weight: 800;
-            color: var(--primary-dark);
+            font-weight: 700;
+            color: var(--primary);
             margin-bottom: 6px;
         }
 
-        .page-header-text p {
-            font-size: 14px;
+        .page-header p {
+            font-size: 15px;
             color: var(--text-muted);
         }
 
-        .page-header-badges {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .header-pill {
-            background: var(--primary-light);
-            color: var(--primary-dark);
-            font-size: 12px;
-            font-weight: 600;
-            padding: 6px 12px;
-            border-radius: var(--radius-sm);
-            border: 1px solid #cbd5e1;
-        }
-
-        /* Catalog Layout */
-        .catalog-wrapper {
+        /* Layout */
+        .catalog-layout {
             display: grid;
-            grid-template-columns: 290px 1fr;
+            grid-template-columns: 240px 1fr;
             gap: 24px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
-        /* Sidebar Filters */
-        .filters {
+        /* Simple Sidebar */
+        .filters-aside {
             background: #ffffff;
             border: 1px solid var(--border);
-            border-radius: var(--radius-md);
+            border-radius: var(--radius);
             padding: 20px;
-            box-shadow: var(--shadow-sm);
             height: fit-content;
-            position: sticky;
-            top: 90px;
         }
 
-        .filter-header-main {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .filter-section {
             margin-bottom: 20px;
-            padding-bottom: 12px;
+            padding-bottom: 16px;
             border-bottom: 1px solid var(--border);
         }
 
-        .filter-header-main h3 {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .filter-reset-link {
-            font-size: 12px;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .filter-group {
-            margin-bottom: 22px;
-            padding-bottom: 18px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .filter-group:last-child {
+        .filter-section:last-child {
             border-bottom: none;
             margin-bottom: 0;
             padding-bottom: 0;
         }
 
         .filter-title {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--primary-dark);
             margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .filter-search-input {
-            width: 100%;
-            padding: 9px 12px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            font-size: 13px;
-            margin-bottom: 14px;
-            background: #f8fafc;
-        }
-
-        .filter-search-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: #ffffff;
+            color: var(--primary);
         }
 
         .filter-list {
@@ -390,154 +173,41 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            font-size: 13px;
         }
 
         .filter-item {
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 13px;
-            color: var(--text-main);
             cursor: pointer;
         }
 
-        .filter-item input[type="radio"],
-        .filter-item input[type="checkbox"] {
+        .filter-item input {
             accent-color: var(--accent);
-            width: 15px;
-            height: 15px;
             cursor: pointer;
-        }
-
-        .filter-item label {
-            flex: 1;
-            cursor: pointer;
-        }
-
-        .filter-item:hover label {
-            color: var(--primary);
         }
 
         .filter-count {
-            font-size: 11px;
-            color: var(--text-subtle);
-            background: #f1f5f9;
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-
-        .price-inputs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-        }
-
-        .price-input {
-            width: 50%;
-            padding: 7px 10px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            font-size: 13px;
-        }
-
-        .download-box {
-            background: var(--primary-light);
-            border-radius: var(--radius-sm);
-            padding: 14px;
-            margin-top: 18px;
-            border: 1px dashed var(--primary);
-            text-align: center;
-        }
-
-        .download-box h4 {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 6px;
-        }
-
-        .download-box p {
-            font-size: 11px;
             color: var(--text-muted);
-            margin-bottom: 10px;
-        }
-
-        /* Main Content */
-        .main-content {
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Toolbar */
-        .toolbar {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 14px 20px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .toolbar-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        .toolbar-left strong {
-            color: var(--text-main);
-        }
-
-        .toolbar-right {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .sort-select {
-            padding: 8px 12px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            font-size: 13px;
-            background: #ffffff;
-            color: var(--text-main);
-            cursor: pointer;
-        }
-
-        .view-toggle {
-            display: flex;
-            gap: 4px;
-        }
-
-        .view-btn {
-            width: 34px;
-            height: 34px;
-            border: 1px solid var(--border);
-            background: #ffffff;
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            cursor: pointer;
-            color: var(--text-muted);
-        }
-
-        .view-btn.active {
-            background: var(--primary-light);
-            border-color: var(--primary);
-            color: var(--primary);
-            font-weight: bold;
+            margin-left: auto;
+            font-size: 12px;
         }
 
         /* Products Grid */
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
         .products-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -548,424 +218,194 @@
         .product-card {
             background: #ffffff;
             border: 1px solid var(--border);
-            border-radius: var(--radius-md);
+            border-radius: var(--radius);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: all 0.25s;
-            box-shadow: var(--shadow-sm);
+            transition: border-color 0.2s;
         }
 
         .product-card:hover {
             border-color: var(--primary);
-            box-shadow: var(--shadow-md);
-            transform: translateY(-3px);
         }
 
-        .product-image-box {
-            height: 190px;
-            background: linear-gradient(135deg, #0284c7 0%, #004b87 100%);
+        .product-img {
+            height: 150px;
+            background: linear-gradient(135deg, #0ea5e9, #0052a3);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 58px;
+            font-size: 44px;
             color: #ffffff;
             position: relative;
         }
 
-        .prod-badge {
+        .badge-tag {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: var(--radius-full);
+            top: 8px;
+            right: 8px;
+            background: var(--accent);
             color: #ffffff;
-            text-transform: uppercase;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 12px;
         }
 
-        .prod-badge.hot { background: var(--accent); }
-        .prod-badge.gost { background: #059669; }
-        .prod-badge.new { background: #2563eb; }
-        .prod-badge.sale { background: #dc2626; }
-
         .product-body {
-            padding: 18px;
+            padding: 16px;
             display: flex;
             flex-direction: column;
             flex: 1;
         }
 
-        .product-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .product-cat {
             font-size: 11px;
+            color: var(--primary);
             text-transform: uppercase;
-            font-weight: 700;
-            color: var(--text-subtle);
-            margin-bottom: 6px;
+            font-weight: 600;
+            margin-bottom: 4px;
         }
 
         .product-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
             line-height: 1.3;
         }
 
         .product-desc {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
             margin-bottom: 12px;
             line-height: 1.4;
-            min-height: 36px;
         }
 
-        .product-specs-chips {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            margin-bottom: 14px;
-        }
-
-        .spec-chip {
-            background: #f1f5f9;
-            color: var(--text-muted);
-            font-size: 11px;
-            font-weight: 600;
-            padding: 3px 8px;
-            border-radius: 4px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .product-price-row {
+        .product-bottom {
             margin-top: auto;
-            padding-top: 14px;
             border-top: 1px solid var(--border);
+            padding-top: 12px;
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 14px;
+            align-items: center;
+            margin-bottom: 12px;
         }
 
-        .price-box {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .price-main {
-            font-size: 22px;
+        .price-text {
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
-            line-height: 1;
         }
 
-        .price-main small {
+        .stock-tag {
             font-size: 12px;
-            font-weight: 500;
-            color: var(--text-muted);
+            color: #16a34a;
         }
 
-        .price-rrp {
-            font-size: 11px;
-            color: var(--text-subtle);
-            text-decoration: line-through;
-            margin-top: 2px;
-        }
-
-        .stock-indicator {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--success);
-            text-align: right;
-        }
-
-        .product-actions-row {
-            display: flex;
-            gap: 8px;
-        }
-
-        .stepper-mock {
-            display: flex;
-            align-items: center;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            background: #f8fafc;
-        }
-
-        .stepper-btn {
-            width: 28px;
-            height: 36px;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-muted);
-        }
-
-        .stepper-val {
-            width: 32px;
-            text-align: center;
+        .btn-order {
+            width: 100%;
+            padding: 8px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border: 1px solid transparent;
+            border-radius: 6px;
             font-size: 13px;
-            font-weight: 700;
-            color: var(--text-main);
+            font-weight: 600;
+            cursor: pointer;
         }
 
-        .btn-add-rfq {
-            flex: 1;
-            padding: 8px 12px;
+        .btn-order:hover {
             background: var(--primary);
             color: #ffffff;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-add-rfq:hover {
-            background: var(--primary-dark);
         }
 
         /* Pagination */
         .pagination {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 8px;
-            margin-top: 20px;
+            gap: 6px;
         }
 
-        .page-item {
-            min-width: 36px;
-            height: 36px;
-            display: inline-flex;
+        .page-num {
+            width: 34px;
+            height: 34px;
+            display: flex;
             align-items: center;
             justify-content: center;
             border: 1px solid var(--border);
             background: #ffffff;
-            border-radius: var(--radius-sm);
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-main);
+            border-radius: 6px;
             text-decoration: none;
-            padding: 0 8px;
-            transition: all 0.2s;
+            color: var(--text-main);
+            font-size: 13px;
+            font-weight: 500;
         }
 
-        .page-item:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .page-item.active {
+        .page-num.active {
             background: var(--primary);
             color: #ffffff;
             border-color: var(--primary);
         }
 
-        /* Floating RFQ Specification Bar (Bottom sticky mock) */
-        .rfq-sticky-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #ffffff;
-            border-top: 2px solid var(--primary);
-            box-shadow: 0 -4px 16px rgba(0, 50, 100, 0.12);
-            padding: 12px 0;
-            z-index: 99;
-        }
-
-        .rfq-bar-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .rfq-summary {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .rfq-cart-icon {
-            font-size: 22px;
-            background: var(--primary-light);
-            width: 40px;
-            height: 40px;
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .rfq-data {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .rfq-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .rfq-sub {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .rfq-btns {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
+        @media (max-width: 900px) {
+            .catalog-layout {
+                grid-template-columns: 1fr;
+            }
             .products-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (max-width: 900px) {
-            .catalog-wrapper {
-                grid-template-columns: 1fr;
+        @media (max-width: 600px) {
+            nav.nav-links {
+                display: none;
             }
-            .filters {
-                position: static;
-            }
-        }
-
-        @media (max-width: 650px) {
             .products-grid {
                 grid-template-columns: 1fr;
-            }
-            nav.main-nav {
-                display: none;
-            }
-            .top-bar {
-                display: none;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Utility Bar -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-inner">
-                <div class="top-info-group">
-                    <span>🏭 Производство: Кинешма</span>
-                    <span>📍 Центральный оптовый склад: Иваново</span>
-                    <div class="badge-1c">
-                        <span class="badge-1c-dot"></span>
-                        <span>1С:Предприятие online • Цены актуальны</span>
-                    </div>
-                </div>
-                <div class="top-info-group">
-                    <span>Отдел оптовых продаж:</span>
-                    <a href="tel:+74932246464" class="top-contact-link">+7 (4932) 24-64-64</a>
-                    <a href="mailto:4613463@list.ru" class="top-contact-link">4613463@list.ru</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Header -->
+    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-inner">
-                <a href="homepage-mockup.html" class="logo-wrap">
-                    <div class="logo-symbol">🐟</div>
-                    <div class="logo-texts">
-                        <span class="logo-title">ОКЕАН</span>
-                        <span class="logo-tagline">Рыбоперерабатывающий комбинат</span>
-                    </div>
+                <a href="homepage-mockup.html" class="logo">
+                    <span class="logo-icon">🐟</span>
+                    <span>ОКЕАН</span>
                 </a>
 
-                <nav class="main-nav">
-                    <a href="homepage-mockup.html">Главная витрина</a>
-                    <a href="catalog-page.html" class="active">Оптовый каталог</a>
-                    <a href="homepage-mockup.html#tiers">Условия опта</a>
+                <nav class="nav-links">
+                    <a href="homepage-mockup.html">Главная</a>
+                    <a href="catalog-page.html" class="active">Каталог</a>
                     <a href="homepage-mockup.html#retail">Розничный магазин</a>
-                    <a href="index.html" class="btn btn-pres">← Презентация</a>
+                    <a href="homepage-mockup.html#contact">Контакты</a>
                 </nav>
 
                 <div class="header-actions">
-                    <button class="btn btn-primary" onclick="alert('Формирование спецификации для 1С... В демо-мокапе добавлено 3 позиции.');">
-                        Запросить КП (3)
-                    </button>
+                    <a href="index.html" class="btn btn-secondary">← Презентация</a>
+                    <a href="homepage-mockup.html#contact" class="btn btn-primary">Запросить КП</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- 1C Integration Status Banner -->
-    <div class="sync-banner">
-        <div class="container">
-            <div class="sync-banner-inner">
-                <div class="sync-tag">
-                    <span>🟢 1С:Предприятие 8.3 — Данные синхронизированы сегодня в 09:15 МСК</span>
-                </div>
-                <div>
-                    Все указанные цены — действующие оптовые с НДС при отгрузке от 1 ящика
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Breadcrumb -->
-    <div class="breadcrumb">
-        <div class="container">
-            <a href="homepage-mockup.html">Главная</a> /
-            <span>Каталог товаров (1С номенклатура)</span>
-        </div>
-    </div>
-
-    <!-- Page Header -->
     <div class="container">
+        <!-- Page Header -->
         <div class="page-header">
-            <div class="page-header-text">
-                <h1>Оптовый каталог рыбной продукции</h1>
-                <p>Более 200 позиций копчёной, солёной, вяленой рыбы, снеков и пресервов от производителя в Кинешме</p>
-            </div>
-            <div class="page-header-badges">
-                <span class="header-pill">📦 Квант: от 1 ящика</span>
-                <span class="header-pill">🛡️ Ветсвидетельства «Меркурий»</span>
-                <span class="header-pill">🚚 Доставка рефрижераторами</span>
-            </div>
+            <h1>Каталог продукции</h1>
+            <p>Оптовая номенклатура (200+ SKU). Выгрузка цен и остатков из базы 1С:Предприятие</p>
         </div>
 
         <!-- Catalog Layout -->
-        <div class="catalog-wrapper">
+        <div class="catalog-layout">
             
-            <!-- Sidebar Filters -->
-            <aside class="filters">
-                <div class="filter-header-main">
-                    <h3>Фильтры каталога</h3>
-                    <a href="catalog-page.html" class="filter-reset-link">Сбросить</a>
-                </div>
-
-                <!-- Search -->
-                <div class="filter-group">
-                    <div class="filter-title">🔍 Поиск по названию / SKU</div>
-                    <input type="text" class="filter-search-input" placeholder="Напр. Скумбрия, SK-001...">
-                </div>
-
-                <!-- Categories -->
-                <div class="filter-group">
-                    <div class="filter-title">📁 Категория (1С)</div>
+            <!-- Filters -->
+            <aside class="filters-aside">
+                <div class="filter-section">
+                    <div class="filter-title">Категории</div>
                     <ul class="filter-list">
                         <li class="filter-item">
                             <input type="radio" id="cat-all" name="cat" checked>
@@ -984,572 +424,276 @@
                         </li>
                         <li class="filter-item">
                             <input type="radio" id="cat-dried" name="cat">
-                            <label for="cat-dried">Сушеная и вяленая</label>
+                            <label for="cat-dried">Сушеная рыба</label>
                             <span class="filter-count">32</span>
                         </li>
                         <li class="filter-item">
                             <input type="radio" id="cat-canned" name="cat">
-                            <label for="cat-canned">Консервы и пресервы</label>
+                            <label for="cat-canned">Консервы</label>
                             <span class="filter-count">52</span>
                         </li>
                         <li class="filter-item">
                             <input type="radio" id="cat-sets" name="cat">
-                            <label for="cat-sets">Наборы и подарки</label>
+                            <label for="cat-sets">Наборы</label>
                             <span class="filter-count">18</span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Tech / Method -->
-                <div class="filter-group">
-                    <div class="filter-title">⚙️ Обработка</div>
+                <div class="filter-section">
+                    <div class="filter-title">Наличие</div>
                     <ul class="filter-list">
                         <li class="filter-item">
-                            <input type="checkbox" id="m-cold" checked>
-                            <label for="m-cold">Холодное копчение</label>
+                            <input type="checkbox" id="stock-yes" checked>
+                            <label for="stock-yes">В наличии на складе</label>
                         </li>
                         <li class="filter-item">
-                            <input type="checkbox" id="m-hot" checked>
-                            <label for="m-hot">Горячее копчение</label>
-                        </li>
-                        <li class="filter-item">
-                            <input type="checkbox" id="m-salt">
-                            <label for="m-salt">Слабосолёная / Пряная</label>
-                        </li>
-                        <li class="filter-item">
-                            <input type="checkbox" id="m-dry">
-                            <label for="m-dry">Вяленая на воздухе</label>
+                            <input type="checkbox" id="stock-pre">
+                            <label for="stock-pre">Под заказ</label>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Price Range -->
-                <div class="filter-group">
-                    <div class="filter-title">💰 Цена за кг/шт (₽)</div>
-                    <div class="price-inputs">
-                        <input type="number" class="price-input" placeholder="От" value="250">
-                        <input type="number" class="price-input" placeholder="До" value="3000">
-                    </div>
-                </div>
-
-                <!-- Stock / Standard -->
-                <div class="filter-group">
-                    <div class="filter-title">🛡️ Параметры</div>
-                    <ul class="filter-list">
-                        <li class="filter-item">
-                            <input type="checkbox" id="in-stock" checked>
-                            <label for="in-stock">Только на складе (Иваново)</label>
-                        </li>
-                        <li class="filter-item">
-                            <input type="checkbox" id="is-gost">
-                            <label for="is-gost">Строго ГОСТ</label>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Excel Download Box -->
-                <div class="download-box">
-                    <h4>📥 Прайс-лист для закупщиков</h4>
-                    <p>Полный перечень 200+ SKU с ценами и штрихкодами</p>
-                    <button class="btn btn-outline-primary" style="font-size: 12px; width: 100%; padding: 8px;" onclick="alert('Скачивание демо-прайса ocean_price_2026.xlsx');">
-                        Скачать прайс (.XLSX)
+                <div style="margin-top: 16px;">
+                    <button class="btn btn-secondary" style="width: 100%; font-size: 13px;" onclick="alert('Скачивание демо-прайса (.xlsx)');">
+                        📥 Скачать прайс (.xlsx)
                     </button>
                 </div>
             </aside>
 
             <!-- Main Content -->
-            <main class="main-content">
-                
-                <!-- Toolbar -->
+            <main>
                 <div class="toolbar">
-                    <div class="toolbar-left">
-                        <span>Найдено: <strong>12</strong> из <strong>215</strong> позиций (1С номенклатура)</span>
-                    </div>
-                    <div class="toolbar-right">
-                        <label style="font-size: 13px; color: var(--text-muted);">Сортировка:</label>
-                        <select class="sort-select">
-                            <option>По популярности в заказах 1С</option>
-                            <option>По цене: сначала дешевле</option>
-                            <option>По цене: сначала дороже</option>
-                            <option>По названию (А–Я)</option>
+                    <span>Показано: <strong>12</strong> из <strong>215</strong> позиций</span>
+                    <div>
+                        <span>Сортировка: </span>
+                        <select style="border: 1px solid var(--border); padding: 4px 8px; border-radius: 4px; font-size: 13px;">
+                            <option>По популярности</option>
+                            <option>По цене</option>
+                            <option>По названию</option>
                         </select>
-                        <div class="view-toggle">
-                            <button class="view-btn active" title="Вид: Сетка">⊞</button>
-                            <button class="view-btn" title="Вид: Таблица (оптовый прайс)">☰</button>
-                        </div>
                     </div>
                 </div>
 
-                <!-- Products Grid -->
                 <div class="products-grid">
-                    
                     <!-- Product 1 -->
                     <div class="product-card">
-                        <div class="product-image-box">
+                        <div class="product-img">
                             🐟
-                            <span class="prod-badge hot">ХИТ 1С</span>
+                            <span class="badge-tag">ХИТ</span>
                         </div>
                         <div class="product-body">
-                            <div class="product-meta">
-                                <span>Копчёная рыба</span>
-                                <span>SKU: SK-001</span>
+                            <span class="product-cat">Копчёная рыба</span>
+                            <h3 class="product-title">Скумбрия х/к б/г</h3>
+                            <p class="product-desc">Холодное копчение на ольхе, вес ящика 5 кг</p>
+                            <div class="product-bottom">
+                                <span class="price-text">450 ₽ / кг</span>
+                                <span class="stock-tag">✓ В наличии</span>
                             </div>
-                            <h3 class="product-title">Скумбрия х/к б/г (атлантическая)</h3>
-                            <p class="product-desc">Холодное копчение на ольховой щепе. Плотная консистенция, золотистый цвет, чистый вкус.</p>
-                            <div class="product-specs-chips">
-                                <span class="spec-chip">Квант: ящик 5 кг</span>
-                                <span class="spec-chip">ГОСТ 11482</span>
-                                <span class="spec-chip">Срок: 45 сут</span>
-                            </div>
-                            <div class="product-price-row">
-                                <div class="price-box">
-                                    <div class="price-main">450 ₽ <small>/ кг</small></div>
-                                    <div class="price-rrp">РРЦ: ~620 ₽</div>
-                                </div>
-                                <div class="stock-indicator">✓ В наличии: 18 ящ</div>
-                            </div>
-                            <div class="product-actions-row">
-                                <div class="stepper-mock">
-                                    <button class="stepper-btn">-</button>
-                                    <span class="stepper-val">1</span>
-                                    <button class="stepper-btn">+</button>
-                                </div>
-                                <button class="btn-add-rfq" onclick="alert('Добавлено в спецификацию КП!');">В заявку КП</button>
-                            </div>
+                            <button class="btn-order" onclick="alert('Добавлено в заявку');">В заявку КП</button>
                         </div>
                     </div>
 
                     <!-- Product 2 -->
                     <div class="product-card">
-                        <div class="product-image-box">
+                        <div class="product-img">
                             🐟
-                            <span class="prod-badge gost">ГОСТ</span>
+                            <span class="badge-tag">ГОСТ</span>
                         </div>
                         <div class="product-body">
-                            <div class="product-meta">
-                                <span>Солёная рыба</span>
-                                <span>SKU: SE-002</span>
+                            <span class="product-cat">Солёная рыба</span>
+                            <h3 class="product-title">Сельдь слабосолёная</h3>
+                            <p class="product-desc">Крупная тихоокеанская, ведро 10 кг</p>
+                            <div class="product-bottom">
+                                <span class="price-text">380 ₽ / кг</span>
+                                <span class="stock-tag">✓ В наличии</span>
                             </div>
-                            <h3 class="product-title">Сельдь тихоокеанская слабосолёная</h3>
-                            <p class="product-desc">Классический бочковой посол, крупная жирная сельдь (300+ г). Без добавления консервантов.</p>
-                            <div class="product-specs-chips">
-                                <span class="spec-chip">Ведро 10 кг</span>
-                                <span class="spec-chip">ГОСТ 815</span>
-                                <span class="spec-chip">Срок: 30 сут</span>
-                            </div>
-                            <div class="product-price-row">
-                                <div class="price-box">
-                                    <div class="price-main">380 ₽ <small>/ кг</small></div>
-                                    <div class="price-rrp">РРЦ: ~510 ₽</div>
-                                </div>
-                                <div class="stock-indicator">✓ В наличии: 25 вед</div>
-                            </div>
-                            <div class="product-actions-row">
-                                <div class="stepper-mock">
-                                    <button class="stepper-btn">-</button>
-                                    <span class="stepper-val">1</span>
-                                    <button class="stepper-btn">+</button>
-                                </div>
-                                <button class="btn-add-rfq" onclick="alert('Добавлено в спецификацию КП!');">В заявку КП</button>
-                            </div>
+                            <button class="btn-order" onclick="alert('Добавлено в заявку');">В заявку КП</button>
                         </div>
                     </div>
 
                     <!-- Product 3 -->
                     <div class="product-card">
-                        <div class="product-image-box">
+                        <div class="product-img">
                             🐟
-                            <span class="prod-badge sale">-12% АКЦИЯ</span>
                         </div>
                         <div class="product-body">
-                            <div class="product-meta">
-                                <span>Консервы</span>
-                                <span>SKU: KN-003</span>
+                            <span class="product-cat">Консервы</span>
+                            <h3 class="product-title">Горбуша в масле</h3>
+                            <p class="product-desc">Натуральная банка 240г, коробка 24 шт</p>
+                            <div class="product-bottom">
+                                <span class="price-text">280 ₽ / шт</span>
+                                <span class="stock-tag">✓ В наличии</span>
                             </div>
-                            <h3 class="product-title">Горбуша натуральная в масле</h3>
-                            <p class="product-desc">Цельные куски дикой дальневосточной горбуши, премиальное масло, жестяная банка с ключом.</p>
-                            <div class="product-specs-chips">
-                                <span class="spec-chip">Банка 240г</span>
-                                <span class="spec-chip">Коробка 24 шт</span>
-                                <span class="spec-chip">Срок: 24 мес</span>
-                            </div>
-                            <div class="product-price-row">
-                                <div class="price-box">
-                                    <div class="price-main">280 ₽ <small>/ шт</small></div>
-                                    <div class="price-rrp">Старая: 320 ₽</div>
-                                </div>
-                                <div class="stock-indicator">✓ В наличии: 50 кор</div>
-                            </div>
-                            <div class="product-actions-row">
-                                <div class="stepper-mock">
-                                    <button class="stepper-btn">-</button>
-                                    <span class="stepper-val">2</span>
-                                    <button class="stepper-btn">+</button>
-                                </div>
-                                <button class="btn-add-rfq" onclick="alert('Добавлено в спецификацию КП!');">В заявку КП</button>
-                            </div>
+                            <button class="btn-order" onclick="alert('Добавлено в заявку');">В заявку КП</button>
                         </div>
                     </div>
 
                     <!-- Product 4 -->
                     <div class="product-card">
-                        <div class="product-image-box">
+                        <div class="product-img">
                             🐟
-                            <span class="prod-badge hot">ХИТ СНЕКИ</span>
+                            <span class="badge-tag">ХИТ</span>
                         </div>
                         <div class="product-body">
-                            <div class="product-meta">
-                                <span>Сушеная рыба</span>
-                                <span>SKU: SU-004</span>
+                            <span class="product-cat">Вяленая рыба</span>
+                            <h3 class="product-title">Корюшка вяленая</h3>
+                            <p class="product-desc">Дальневосточная икряная, гофрокороб 3 кг</p>
+                            <div class="product-bottom">
+                                <span class="price-text">520 ₽ / кг</span>
+                                <span class="stock-tag">✓ В наличии</span>
                             </div>
-                            <h3 class="product-title">Корюшка вяленая дальневосточная</h3>
-                            <p class="product-desc">Идеальная сушка, высокая жирность, икряная более 70%. Прекрасный выбор для пивных сетей.</p>
-                            <div class="product-specs-chips">
-                                <span class="spec-chip">Гофрокороб 3 кг</span>
-                                <span class="spec-chip">Фасовка: развес</span>
-                                <span class="spec-chip">Срок: 60 сут</span>
-                            </div>
-                            <div class="product-price-row">
-                                <div class="price-box">
-                                    <div class="price-main">520 ₽ <small>/ кг</small></div>
-                                    <div class="price-rrp">РРЦ: ~750 ₽</div>
-                                </div>
-                                <div class="stock-indicator">✓ В наличии: 12 ящ</div>
-                            </div>
-                            <div class="product-actions-row">
-                                <div class="stepper-mock">
-                                    <button class="stepper-btn">-</button>
-                                    <span class="stepper-val">1</span>
-                                    <button class="stepper-btn">+</button>
-                                </div>
-                                <button class="btn-add-rfq" onclick="alert('Добавлено в спецификацию КП!');">В заявку КП</button>
-                            </div>
+                            <button class="btn-order" onclick="alert('Добавлено в заявку');">В заявку КП</button>
                         </div>
                     </div>
 
                     <!-- Product 5 -->
                     <div class="product-card">
-                        <div class="product-image-box">
+                        <div class="product-img">
                             🐟
-                            <span class="prod-badge new">НОВИНКА</span>
                         </div>
                         <div class="product-body">
-                            <div class="product-meta">
-                                <span>Копчёная рыба</span>
-                                <span>SKU: PA-005</span>
+                            <span class="product-cat">Копчёная рыба</span>
+                            <h3 class="product-title">Палтус х/к (кусок)</h3>
+                            <p class="product-desc">Вакуумная упаковка 400г, деликатес</p>
+                            <div class="product-bottom">
+                                <span class="price-text">890 ₽ / шт</span>
+                                <span class="stock-tag">✓ В наличии</span>
                             </div>
-                            <h3 class="product-title">Палтус синекорый х/к (кусок в вакууме)</h3>
-                            <p class="product-desc">Премиальный деликатес для ресторанов и гастрономов. Нежное белое мясо, умеренная жирность.</p>
-                            <div class="product-specs-chips">
-                                <span class="spec-chip">Вакуум 400г</span>
-                                <span class="spec-chip">Ящик 6 кг</span>
-                                <span class="spec-chip">ГОСТ 7447</span>
-                            </div>
-                            <div class="product-price-row">
-                                <div class="price-box">
-                                    <div class="price-main">890 ₽ <small>/ шт</small></div>
-                                    <div class="price-rrp">РРЦ: ~1 200 ₽</div>
-                                </div>
-                                <div class="stock-indicator">✓ В наличии: 8 ящ</div>
-                            </div>
-                            <div class="product-actions-row">
-                                <div class="stepper-mock">
-                                    <button class="stepper-btn">-</button>
-                                    <span class="stepper-val">1</span>
-                                    <button class="stepper-btn">+</button>
-                                </div>
-                                <button class="btn-add-rfq" onclick="alert('Добавлено в спецификацию КП!');">В заявку КП</button>
-                            </div>
+                            <button class="btn-order" onclick="alert('Добавлено в заявку');">В заявку КП</button>
                         </div>
                     </div>
 
                     <!-- Product 6 -->
                     <div class="product-card">
-                        <div class="product-image-box">
+                        <div class="product-img">
                             🐟
                         </div>
                         <div class="product-body">
-                            <div class="product-meta">
-                                <span>Наборы и снеки</span>
-                                <span>SKU: PN-006</span>
+                            <span class="product-cat">Наборы</span>
+                            <h3 class="product-title">Набор «Волжский крафт»</h3>
+                            <p class="product-desc">Ассорти вяленой и копченой рыбы, 850г</p>
+                            <div class="product-bottom">
+                                <span class="price-text">1 200 ₽ / шт</span>
+                                <span class="stock-tag">✓ В наличии</span>
                             </div>
-                            <h3 class="product-title">Подарочный бокс «Волжский крафт»</h3>
-                            <p class="product-desc">Фирменный деревянный ящик: ассорти из 4 видов вяленой и копченой рыбы (лещ, корюшка, чехонь).</p>
-                            <div class="product-specs-chips">
-                                <span class="spec-chip">Вес: 850г</span>
-                                <span class="spec-chip">Подарочная упак.</span>
-                                <span class="spec-chip">Срок: 45 сут</span>
-                            </div>
-                            <div class="product-price-row">
-                                <div class="price-box">
-                                    <div class="price-main">1 200 ₽ <small>/ набор</small></div>
-                                    <div class="price-rrp">РРЦ: ~1 700 ₽</div>
-                                </div>
-                                <div class="stock-indicator">✓ В наличии: 15 наб</div>
-                            </div>
-                            <div class="product-actions-row">
-                                <div class="stepper-mock">
-                                    <button class="stepper-btn">-</button>
-                                    <span class="stepper-val">1</span>
-                                    <button class="stepper-btn">+</button>
-                                </div>
-                                <button class="btn-add-rfq" onclick="alert('Добавлено в спецификацию КП!');">В заявку КП</button>
-                            </div>
+                            <button class="btn-order" onclick="alert('Добавлено в заявку');">В заявку КП</button>
                         </div>
                     </div>
 
                     <!-- Product 7 -->
                     <div class="product-card">
-                        <div class="product-image-box">
+                        <div class="product-img">
                             🐟
-                            <span class="prod-badge sale">-15% ОБЪЕМ</span>
                         </div>
                         <div class="product-body">
-                            <div class="product-meta">
-                                <span>Консервы</span>
-                                <span>SKU: KA-007</span>
+                            <span class="product-cat">Консервы</span>
+                            <h3 class="product-title">Кальмар в соку</h3>
+                            <p class="product-desc">Командорский кальмар, банка 190г</p>
+                            <div class="product-bottom">
+                                <span class="price-text">425 ₽ / шт</span>
+                                <span class="stock-tag">✓ В наличии</span>
                             </div>
-                            <h3 class="product-title">Кальмар командорский в собств. соку</h3>
-                            <p class="product-desc">Натуральное филе кальмара без кожи. 100% чистый белок для здорового питания и салатов.</p>
-                            <div class="product-specs-chips">
-                                <span class="spec-chip">Банка 190г</span>
-                                <span class="spec-chip">Коробка 36 шт</span>
-                                <span class="spec-chip">ГОСТ 18423</span>
-                            </div>
-                            <div class="product-price-row">
-                                <div class="price-box">
-                                    <div class="price-main">425 ₽ <small>/ шт</small></div>
-                                    <div class="price-rrp">Старая: 500 ₽</div>
-                                </div>
-                                <div class="stock-indicator">✓ В наличии: 30 кор</div>
-                            </div>
-                            <div class="product-actions-row">
-                                <div class="stepper-mock">
-                                    <button class="stepper-btn">-</button>
-                                    <span class="stepper-val">1</span>
-                                    <button class="stepper-btn">+</button>
-                                </div>
-                                <button class="btn-add-rfq" onclick="alert('Добавлено в спецификацию КП!');">В заявку КП</button>
-                            </div>
+                            <button class="btn-order" onclick="alert('Добавлено в заявку');">В заявку КП</button>
                         </div>
                     </div>
 
                     <!-- Product 8 -->
                     <div class="product-card">
-                        <div class="product-image-box">
+                        <div class="product-img">
                             🐟
-                            <span class="prod-badge hot">ПРЕМИУМ</span>
+                            <span class="badge-tag">ПРЕМИУМ</span>
                         </div>
                         <div class="product-body">
-                            <div class="product-meta">
-                                <span>Икра и деликатесы</span>
-                                <span>SKU: IK-008</span>
+                            <span class="product-cat">Деликатесы</span>
+                            <h3 class="product-title">Икра кеты малосольная</h3>
+                            <p class="product-desc">Отборная зернистая икра, стекло 200г</p>
+                            <div class="product-bottom">
+                                <span class="price-text">2 800 ₽ / шт</span>
+                                <span class="stock-tag">✓ В наличии</span>
                             </div>
-                            <h3 class="product-title">Икра кеты дальневосточная (малосол)</h3>
-                            <p class="product-desc">Сухая отборная икра первого сорта. Крупное зерно, нежная оболочка, ГОСТовский посол 3.2%.</p>
-                            <div class="product-specs-chips">
-                                <span class="spec-chip">Стеклобанка 200г</span>
-                                <span class="spec-chip">Коробка 12 шт</span>
-                                <span class="spec-chip">ГОСТ 18173</span>
-                            </div>
-                            <div class="product-price-row">
-                                <div class="price-box">
-                                    <div class="price-main">2 800 ₽ <small>/ шт</small></div>
-                                    <div class="price-rrp">РРЦ: ~3 600 ₽</div>
-                                </div>
-                                <div class="stock-indicator">✓ В наличии: 10 кор</div>
-                            </div>
-                            <div class="product-actions-row">
-                                <div class="stepper-mock">
-                                    <button class="stepper-btn">-</button>
-                                    <span class="stepper-val">1</span>
-                                    <button class="stepper-btn">+</button>
-                                </div>
-                                <button class="btn-add-rfq" onclick="alert('Добавлено в спецификацию КП!');">В заявку КП</button>
-                            </div>
+                            <button class="btn-order" onclick="alert('Добавлено в заявку');">В заявку КП</button>
                         </div>
                     </div>
 
                     <!-- Product 9 -->
                     <div class="product-card">
-                        <div class="product-image-box">
+                        <div class="product-img">
                             🐟
-                            <span class="prod-badge new">НОВОЕ</span>
                         </div>
                         <div class="product-body">
-                            <div class="product-meta">
-                                <span>Копчёная рыба</span>
-                                <span>SKU: FO-009</span>
+                            <span class="product-cat">Копчёная рыба</span>
+                            <h3 class="product-title">Форель радужная г/к</h3>
+                            <p class="product-desc">Порционный стейк в вакууме 300г</p>
+                            <div class="product-bottom">
+                                <span class="price-text">650 ₽ / шт</span>
+                                <span class="stock-tag">✓ В наличии</span>
                             </div>
-                            <h3 class="product-title">Форель радужная г/к (порционный стейк)</h3>
-                            <p class="product-desc">Горячее копчение при температуре 85°C. Готовый продукт для быстрого ужина или ресторанной витрины.</p>
-                            <div class="product-specs-chips">
-                                <span class="spec-chip">Вакуум 300г</span>
-                                <span class="spec-chip">Ящик 4.5 кг</span>
-                                <span class="spec-chip">Срок: 25 сут</span>
-                            </div>
-                            <div class="product-price-row">
-                                <div class="price-box">
-                                    <div class="price-main">650 ₽ <small>/ шт</small></div>
-                                    <div class="price-rrp">РРЦ: ~890 ₽</div>
-                                </div>
-                                <div class="stock-indicator">✓ В наличии: 14 ящ</div>
-                            </div>
-                            <div class="product-actions-row">
-                                <div class="stepper-mock">
-                                    <button class="stepper-btn">-</button>
-                                    <span class="stepper-val">1</span>
-                                    <button class="stepper-btn">+</button>
-                                </div>
-                                <button class="btn-add-rfq" onclick="alert('Добавлено в спецификацию КП!');">В заявку КП</button>
-                            </div>
+                            <button class="btn-order" onclick="alert('Добавлено в заявку');">В заявку КП</button>
                         </div>
                     </div>
 
                     <!-- Product 10 -->
                     <div class="product-card">
-                        <div class="product-image-box">
+                        <div class="product-img">
                             🐟
                         </div>
                         <div class="product-body">
-                            <div class="product-meta">
-                                <span>Сушеная рыба</span>
-                                <span>SKU: MS-010</span>
+                            <span class="product-cat">Вяленая рыба</span>
+                            <h3 class="product-title">Соломка сельди</h3>
+                            <p class="product-desc">Вяленое филе соломкой, фасовка 1 кг</p>
+                            <div class="product-bottom">
+                                <span class="price-text">480 ₽ / кг</span>
+                                <span class="stock-tag">✓ В наличии</span>
                             </div>
-                            <h3 class="product-title">Соломка сельди масляная вяленая</h3>
-                            <p class="product-desc">Очищенное филе без костей, нарезанное полосками. Высокая рентабельность для разливных магазинов.</p>
-                            <div class="product-specs-chips">
-                                <span class="spec-chip">Фасовка: 1 кг</span>
-                                <span class="spec-chip">Ящик 10 кг</span>
-                                <span class="spec-chip">Срок: 90 сут</span>
-                            </div>
-                            <div class="product-price-row">
-                                <div class="price-box">
-                                    <div class="price-main">480 ₽ <small>/ кг</small></div>
-                                    <div class="price-rrp">РРЦ: ~680 ₽</div>
-                                </div>
-                                <div class="stock-indicator">✓ В наличии: 22 ящ</div>
-                            </div>
-                            <div class="product-actions-row">
-                                <div class="stepper-mock">
-                                    <button class="stepper-btn">-</button>
-                                    <span class="stepper-val">1</span>
-                                    <button class="stepper-btn">+</button>
-                                </div>
-                                <button class="btn-add-rfq" onclick="alert('Добавлено в спецификацию КП!');">В заявку КП</button>
-                            </div>
+                            <button class="btn-order" onclick="alert('Добавлено в заявку');">В заявку КП</button>
                         </div>
                     </div>
 
                     <!-- Product 11 -->
                     <div class="product-card">
-                        <div class="product-image-box">
+                        <div class="product-img">
                             🐟
-                            <span class="prod-badge sale">-20%</span>
                         </div>
                         <div class="product-body">
-                            <div class="product-meta">
-                                <span>Консервы и пресервы</span>
-                                <span>SKU: MR-011</span>
+                            <span class="product-cat">Консервы</span>
+                            <h3 class="product-title">Рыба под маринадом</h3>
+                            <p class="product-desc">Томатная заливка, овощи, банка 350г</p>
+                            <div class="product-bottom">
+                                <span class="price-text">320 ₽ / шт</span>
+                                <span class="stock-tag">✓ В наличии</span>
                             </div>
-                            <h3 class="product-title">Рыбное филе под пряным маринадом</h3>
-                            <p class="product-desc">Традиционный русский рецепт: морковь, лук, томатная заливка. Идеальный гарнир и самостоятельная закуска.</p>
-                            <div class="product-specs-chips">
-                                <span class="spec-chip">Банка 350г</span>
-                                <span class="spec-chip">Коробка 20 шт</span>
-                                <span class="spec-chip">ТУ 10.20.25</span>
-                            </div>
-                            <div class="product-price-row">
-                                <div class="price-box">
-                                    <div class="price-main">320 ₽ <small>/ шт</small></div>
-                                    <div class="price-rrp">Старая: 400 ₽</div>
-                                </div>
-                                <div class="stock-indicator">✓ В наличии: 35 кор</div>
-                            </div>
-                            <div class="product-actions-row">
-                                <div class="stepper-mock">
-                                    <button class="stepper-btn">-</button>
-                                    <span class="stepper-val">1</span>
-                                    <button class="stepper-btn">+</button>
-                                </div>
-                                <button class="btn-add-rfq" onclick="alert('Добавлено в спецификацию КП!');">В заявку КП</button>
-                            </div>
+                            <button class="btn-order" onclick="alert('Добавлено в заявку');">В заявку КП</button>
                         </div>
                     </div>
 
                     <!-- Product 12 -->
                     <div class="product-card">
-                        <div class="product-image-box">
+                        <div class="product-img">
                             🐟
-                            <span class="prod-badge hot">ПОДАРОК</span>
                         </div>
                         <div class="product-body">
-                            <div class="product-meta">
-                                <span>Наборы</span>
-                                <span>SKU: AS-012</span>
+                            <span class="product-cat">Наборы</span>
+                            <h3 class="product-title">Ассорти «Океан Гурман»</h3>
+                            <p class="product-desc">6 видов деликатесной рыбы, 1.5 кг</p>
+                            <div class="product-bottom">
+                                <span class="price-text">2 500 ₽ / шт</span>
+                                <span class="stock-tag">✓ В наличии</span>
                             </div>
-                            <h3 class="product-title">Ассорти деликатесное «Океан Гурман»</h3>
-                            <p class="product-desc">6 видов премиальной копчёной и слабосолёной рыбы в термобоксе. Престижный корпоративный подарок.</p>
-                            <div class="product-specs-chips">
-                                <span class="spec-chip">Вес: 1.5 кг</span>
-                                <span class="spec-chip">Термобокс</span>
-                                <span class="spec-chip">Срок: 30 сут</span>
-                            </div>
-                            <div class="product-price-row">
-                                <div class="price-box">
-                                    <div class="price-main">2 500 ₽ <small>/ набор</small></div>
-                                    <div class="price-rrp">РРЦ: ~3 400 ₽</div>
-                                </div>
-                                <div class="stock-indicator">✓ В наличии: 8 наб</div>
-                            </div>
-                            <div class="product-actions-row">
-                                <div class="stepper-mock">
-                                    <button class="stepper-btn">-</button>
-                                    <span class="stepper-val">1</span>
-                                    <button class="stepper-btn">+</button>
-                                </div>
-                                <button class="btn-add-rfq" onclick="alert('Добавлено в спецификацию КП!');">В заявку КП</button>
-                            </div>
+                            <button class="btn-order" onclick="alert('Добавлено в заявку');">В заявку КП</button>
                         </div>
                     </div>
-
                 </div>
 
                 <!-- Pagination -->
                 <div class="pagination">
-                    <a href="#" class="page-item" style="color: var(--text-subtle);">←</a>
-                    <a href="#" class="page-item active">1</a>
-                    <a href="#" class="page-item">2</a>
-                    <a href="#" class="page-item">3</a>
-                    <span class="page-item" style="border:none; background:transparent;">...</span>
-                    <a href="#" class="page-item">18</a>
-                    <a href="#" class="page-item">→</a>
+                    <span class="page-num active">1</span>
+                    <a href="#" class="page-num">2</a>
+                    <a href="#" class="page-num">3</a>
+                    <span class="page-num" style="border:none; background:transparent;">...</span>
+                    <a href="#" class="page-num">18</a>
                 </div>
-
             </main>
-        </div>
-    </div>
-
-    <!-- Floating B2B Specification Bar (Sticky Bottom Mock) -->
-    <div class="rfq-sticky-bar">
-        <div class="container">
-            <div class="rfq-bar-inner">
-                <div class="rfq-summary">
-                    <div class="rfq-cart-icon">📋</div>
-                    <div class="rfq-data">
-                        <span class="rfq-title">В спецификации КП: <strong>3 позиции</strong> (общий вес ~75 кг)</span>
-                        <span class="rfq-sub">Предварительная сумма по оптовому прайсу: <strong>34 200 ₽</strong> с НДС 20%</span>
-                    </div>
-                </div>
-                <div class="rfq-btns">
-                    <button class="btn btn-outline-primary" onclick="alert('Спецификация скопирована в буфер обмена для 1С.');">
-                        Экспорт списка
-                    </button>
-                    <button class="btn btn-primary" onclick="alert('Открытие формы отправки спецификации менеджеру 1С...');">
-                        Сформировать оптовое КП →
-                    </button>
-                </div>
-            </div>
         </div>
     </div>
 
