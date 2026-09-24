@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Презентация проекта: Цифровой B2B-каталог ООО «Океан»</title>
+    <style>
+        :root {
+            --primary: #0052a3;
+            --primary-dark: #003d7a;
+            --primary-light: #e8f1fa;
+            --accent: #ff6b35;
+            --accent-hover: #fa5719;
+            --accent-light: #fff0eb;
+            --success: #27ae60;
+            --success-light: #eafaf1;
+            --text-main: #1a2530;
+            --text-muted: #5c6c7c;
+            --bg-page: #f0f4f8;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+            --shadow: 0 10px 30px rgba(0, 50, 100, 0.08);
+            --shadow-lg: 0 20px 40px rgba(0, 50, 100, 0.12);
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Top Bar */
+        .presentation-bar {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            font-size: 24px;
+            background: var(--primary-light);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-title {
+            font-weight: 800;
+            font-size: 18px;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .brand-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .deck-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .slide-counter {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        .ctrl-btn {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .ctrl-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .ctrl-btn.primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #ffffff;
+        }
+
+        .ctrl-btn.primary:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        /* Slide Viewport */
+        .slide-viewport {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+
+        .slide-deck {
+            width: 100%;
+            max-width: 1100px;
+            min-height: 620px;
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            flex: 1;
+            flex-direction: column;
+            padding: 48px;
+            animation: fadeIn 0.35s ease;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Slide Typography & Badges */
+        .slide-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 6px 12px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            width: fit-content;
+        }
+
+        .slide-tag.accent {
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .slide-tag.success {
+            background: var(--success-light);
+            color: var(--success);
+        }
+
+        .slide-heading {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+
+        .slide-lead {
+            font-size: 17px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 28px;
+            max-width: 920px;
+        }
+
+        /* Layout Grids */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            flex: 1;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            flex: 1;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            flex: 1;
+        }
+
+        /* Cards */
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+            border-color: #cbd5e1;
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .card-icon.orange {
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .card-icon.green {
+            background: var(--success-light);
+            color: var(--success);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .card-bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .card-bullet-list li {
+            font-size: 13px;
+            color: var(--text-main);
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .card-bullet-list li::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: 800;
+        }
+
+        /* Slide 1 - Cover */
+        .cover-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            flex: 1;
+            padding: 20px 0;
+        }
+
+        .cover-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 24px;
+        }
+
+        .cover-title {
+            font-size: 44px;
+            font-weight: 900;
+            line-height: 1.15;
+            color: var(--primary-dark);
+            margin-bottom: 18px;
+            letter-spacing: -1px;
+        }
+
+        .cover-title span {
+            color: var(--accent);
+        }
+
+        .cover-desc {
+            font-size: 19px;
+            color: var(--text-muted);
+            line-height: 1.55;
+            max-width: 860px;
+            margin-bottom: 36px;
+        }
+
+        .cover-metrics {
+            display: flex;
+            gap: 40px;
+            border-top: 2px solid var(--border);
+            padding-top: 26px;
+            width: 100%;
+        }
+
+        .metric-box h3 {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .metric-box p {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Pricing comparison */
+        .pricing-card {
+            background: #ffffff;
+            border: 2px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            position: relative;
+        }
+
+        .pricing-card.recommended {
+            border-color: var(--accent);
+            background: #fffdfc;
+            box-shadow: var(--shadow);
+        }
+
+        .pricing-badge {
+            display: inline-block;
+            font-weight: 800;
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            width: fit-content;
+        }
+
+        .pricing-badge.basic {
+            background: #edf2f7;
+            color: #4a5568;
+        }
+
+        .pricing-badge.target {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .price-val {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--primary-dark);
+        }
+
+        .price-period {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: normal;
+        }
+
+        /* Mockup Preview Card */
+        .preview-box {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .preview-frame {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            gap: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .preview-btn-link {
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .preview-btn-link:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Footer bar inside deck */
+        .slide-footer {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .footer-note {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .kbd {
+            background: #edf2f7;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 11px;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        .retail-banner {
+            background: #f7fafc;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin-top: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .social-chip.vk {
+            color: #0077ff;
+            border-color: #cce3ff;
+            background: #f2f7ff;
+        }
+
+        .social-chip.tg {
+            color: #229ed9;
+            border-color: #c9ebf9;
+            background: #f2faff;
+        }
+
+        @media (max-width: 900px) {
+            .slide { padding: 24px; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .cover-title { font-size: 30px; }
+            .slide-heading { font-size: 22px; }
+            .cover-metrics { flex-direction: column; gap: 14px; }
+        }
+
+        @media print {
+            @page {
+                size: landscape;
+                margin: 0;
+            }
+            body {
+                background: #ffffff !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+            .presentation-bar, .controls-bar {
+                display: none !important;
+            }
+            .presentation-wrapper {
+                max-width: 100% !important;
+                height: auto !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .slides-viewport {
+                height: auto !important;
+                overflow: visible !important;
+                background: none !important;
+                box-shadow: none !important;
+                border: none !important;
+                border-radius: 0 !important;
+            }
+            .slide {
+                display: flex !important;
+                page-break-after: always !important;
+                break-after: page !important;
+                height: 100vh !important;
+                min-height: 100vh !important;
+                box-sizing: border-box !important;
+                opacity: 1 !important;
+                padding: 40px !important;
+                background: #ffffff !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation Bar -->
+    <header class="presentation-bar">
+        <div class="brand-box">
+            <div class="brand-logo">🐟</div>
+            <div>
+                <div class="brand-title">ООО «Океан» · B2B Каталог</div>
+                <div class="brand-sub">Стратегия проекта: Версия 1.0 с 1С (12 недель) & Роадмап v2.0</div>
+            </div>
+        </div>
+
+        <div class="deck-controls">
+            <span class="slide-counter" id="slideIndicator">Слайд 1 из 8</span>
+            <button class="ctrl-btn" onclick="prevSlide()" id="prevBtn" title="Предыдущий слайд (Стрелка влево)">← Назад</button>
+            <button class="ctrl-btn primary" onclick="nextSlide()" id="nextBtn" title="Следующий слайд (Стрелка вправо или Пробел)">Вперёд →</button>
+            <button class="ctrl-btn" onclick="toggleFullscreen()" title="Полноэкранный режим">⛶ Экран</button>
+        </div>
+    </header>
+
+    <!-- Main Deck Viewport -->
+    <main class="slide-viewport">
+        <div class="slide-deck">
+
+            <!-- SLIDE 1: ТИТУЛЬНЫЙ -->
+            <section class="slide active" id="slide-1">
+                <div class="cover-content">
+                    <div class="cover-badge">
+                        <span>Оптимизированный план</span>
+                    </div>
+                    <h1 class="cover-title">
+                        Создание B2B-каталога<br>с выгрузкой из 1С для <span>ООО «Океан»</span>
+                    </h1>
+                    <p class="cover-desc">
+                        Переход от ручной рассылки Excel-прайсов к актуальной оптовой витрине с автоматической синхронизацией 200+ позиций рыбы из 1С.
+                    </p>
+
+                    <div class="cover-metrics">
+                        <div class="metric-box">
+                            <h3>200+ SKU</h3>
+                            <p>Синхронизация из 1С</p>
+                        </div>
+                        <div class="metric-box">
+                            <h3>12 недель</h3>
+                            <p>Срок запуска версии 1.0</p>
+                        </div>
+                        <div class="metric-box">
+                            <h3>150 000 ₽</h3>
+                            <p>Стоимость каталога с 1С</p>
+                        </div>                        
+                    </div>
+                </div>
+
+                <div class="slide-footer">
+                    <div>ООО «Океан» (г. Иваново) · Подготовлено для руководства</div>
+                    <div class="footer-note">Переключение: клавиши <span class="kbd">←</span> и <span class="kbd">→</span> или <span class="kbd">Space</span></div>
+                </div>
+            </section>
+
+            <!-- SLIDE 2: ВЫЗОВЫ И ЦЕЛИ -->
+            <section class="slide" id="slide-2">
+                <div class="slide-tag">Анализ бизнес-процессов</div>
+                <h2 class="slide-heading">Почему простая визитка не решит задачу?</h2>
+                <p class="slide-lead">Простая статичная визитка устаревает в первый же день изменения цен на рыбу. Заказчику нужен живой инструмент оптовых продаж.</p>
+
+                <div class="grid-3">
+                    <div class="feature-card">
+                        <div class="card-icon">⚡</div>
+                        <h3 class="card-title">Проблема</h3>
+                        <p class="card-desc">Рыбный рынок динамичен: цены и складские остатки меняются еженедельно. Если цены на сайте забиты вручную, менеджеры продолжают тратить часы на отправку Excel-прайсов.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="card-icon orange">🔄</div>
+                        <h3 class="card-title">Решение v1.0</h3>
+                        <p class="card-desc">Прямая выгрузка номенклатуры и оптовых цен из 1С на сайт. Менеджер изменил цену или остаток в 1С — через минуту клиенты видят актуальную информацию на сайте.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="card-icon green">🎯</div>
+                        <h3 class="card-title">Эффект для бизнеса</h3>
+                        <p class="card-desc">Экономия до 40 рабочих часов отдела продаж в месяц, отсутствие ошибок в ценах для закупщиков, мгновенный сбор оптовых лидов 24/7.</p>
+                    </div>
+                </div>
+
+                <div class="slide-footer">
+                    <div>Обоснование: автоматизация рутины окупает проект в первые 2–3 месяца</div>
+                    <div>1С ➔ Сайт ➔ B2B-заявка менеджеру</div>
+                </div>
+            </section>
+
+            <!-- SLIDE 3: ЧТО ВХОДИТ В V1.0 -->
+            <section class="slide" id="slide-3">
+                <div class="slide-tag">Состав работ (Scope v1.0)</div>
+                <h2 class="slide-heading">Что входит в версию 1.0 (MVP за 12 недель)</h2>
+                <p class="slide-lead">Оптимальный набор функций: полноценная оптовая витрина с актуальными данными без переплаты за избыточные модули.</p>
+
+                <div class="grid-4">
+                    <div class="feature-card">
+                        <div class="card-icon">🔄</div>
+                        <h3 class="card-title">Синхронизация 1С</h3>
+                        <p class="card-desc">Автоматическая выгрузка всей номенклатуры рыбы, категорий, описаний и актуальных оптовых цен напрямую из базы 1С.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="card-icon orange">🐟</div>
+                        <h3 class="card-title">Каталог 200+ SKU</h3>
+                        <p class="card-desc">Фильтрация по типу заморозки, видам рыбы, фасовке, статус наличия, поиск по названию и артикулу.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="card-icon">📋</div>
+                        <h3 class="card-title">B2B-лидформы</h3>
+                        <p class="card-desc">Кнопка «Запросить оптовый прайс» в карточке каждого товара. Мгновенная отправка контактов закупщика менеджеру.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="card-icon green">📱</div>
+                        <h3 class="card-title">Адаптивный UI</h3>
+                        <p class="card-desc">Удобное отображение на телефонах и планшетах закупщиков и шеф-поваров. Быстрый отклик страниц.</p>
+                    </div>
+                </div>
+
+                <div class="retail-banner">
+                    <div>
+                        <strong>🏪 Раздел фирменного розничного магазина:</strong>
+                        <span style="font-size: 13px; color: var(--text-muted); margin-left: 6px;">
+                            Информационный блок с адресом магазина в г. Иваново и прямыми ссылками на его действующие социальные сети ВКонтакте и Telegram для розничных покупателей.
+                        </span>
+                    </div>
+                    <span class="slide-tag" style="margin: 0;">Без сложных интеграций</span>
+                </div>
+
+                <div class="slide-footer">
+                    <div>Срок реализации: 12 недель</div>
+                </div>
+            </section>
+
+            <!-- SLIDE 4: ДЕМОНСТРАЦИЯ ГОТОВЫХ МОКАПОВ -->
+            <section class="slide" id="slide-4">
+                <div class="slide-tag">Разработанные прототипы</div>
+                <h2 class="slide-heading">Наглядные прототипы готовы к оценке</h2>
+                <p class="slide-lead">Подготовил интерактивные страницы, демонстрирующие логику работы витрины.</p>
+
+                <div class="grid-2">
+                    <div class="preview-box">
+                        <div class="preview-header">
+                            <strong>1. Главная витрина (Homepage)</strong>
+                            <span class="slide-tag">Готово</span>
+                        </div>
+                        <div class="preview-frame">
+                            <div style="font-size: 36px;">🏢</div>
+                            <div style="font-weight: 700; color: var(--primary);">Витрина бренда + Инфо о розничном магазине</div>
+                            <p style="font-size: 13px; color: var(--text-muted);">Hero-блок с оптовым УТП, ключевые преимущества, блок розницы со ссылками на VK/TG, форма заявки.</p>
+                            <a href="homepage-mockup.html" target="_blank" class="preview-btn-link">
+                                ↗ Открыть мокап главной
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="preview-box">
+                        <div class="preview-header">
+                            <strong>2. Каталог продукции (Catalog)</strong>
+                            <span class="slide-tag">Готово</span>
+                        </div>
+                        <div class="preview-frame">
+                            <div style="font-size: 36px;">🛒</div>
+                            <div style="font-weight: 700; color: var(--primary);">Каталог с фильтрами и ценами из 1С</div>
+                            <p style="font-size: 13px; color: var(--text-muted);">Сайдбар фильтрации, 12 реальных товаров Ocean, отображение оптовых цен, статуса наличия и кнопки запроса.</p>
+                            <a href="catalog-page.html" target="_blank" class="preview-btn-link">
+                                ↗ Открыть мокап каталога
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide-footer">
+                    <div>Прототипы можно открыть и протестировать прямо в браузере</div>
+                </div>
+            </section>
+
+            <!-- SLIDE 5: РОЗНИЧНЫЙ МАГАЗИН И СОЦСЕТИ -->
+            <section class="slide" id="slide-5">
+                <div class="slide-tag accent">Розничное направление</div>
+                <h2 class="slide-heading">Фирменный розничный магазин и соцсети</h2>
+                <p class="slide-lead">Четкое разделение: сайт ориентирован на оптовых B2B-партнёров, а для розницы предусмотрен информационный раздел со ссылками на существующие соцсети.</p>
+
+                <div class="grid-3">
+                    <div class="feature-card">
+                        <div class="card-icon" style="background:#e8f3ff; color:#0077ff;">VK</div>
+                        <h3 class="card-title">ВКонтакте розницы</h3>
+                        <p class="card-desc">Ссылка на действующую группу розничного магазина. Розничные покупатели могут узнавать о ежедневных поставках и акциях.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="card-icon" style="background:#e8f7fc; color:#229ed9;">TG</div>
+                        <h3 class="card-title">Telegram розницы</h3>
+                        <p class="card-desc">Ссылка на канал розничного магазина для оперативных анонсов свежего привоза охлажденной рыбы и морепродуктов.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="card-icon green">📍</div>
+                        <h3 class="card-title">Точка продаж в Иваново</h3>
+                        <p class="card-desc">Адрес магазина, график работы и схема проезда на карте, чтобы розничные клиенты не путались с оптовым складом.</p>
+                        <div style="font-size: 12px; color: var(--text-muted); margin-top: auto;">г. Иваново, ул. Пушкина, 1</div>
+                    </div>
+                </div>
+    
+                <div class="slide-footer">
+                    <div>Раздел «Розничный магазин» полностью спроектирован в прототипе главной страницы</div>
+                    <div>Фокус сайта: B2B-продажи</div>
+                </div>
+            </section>
+
+            <!-- SLIDE 6: ДОРОЖНАЯ КАРТА V2.0 -->
+            <section class="slide" id="slide-6">
+                <div class="slide-tag success">Стратегия масштабирования</div>
+                <h2 class="slide-heading">Платформа v2.0: Корзина, Продажи и ЛК</h2>
+                <p class="slide-lead">Благодаря интеграции с 1С уже в версии 1.0, система будет архитектурно на 100% готова к подключению полнофункционального B2B-Ecommerce.</p>
+
+                <div class="grid-2">
+                    <div class="pricing-card" style="border-color: var(--primary);">
+                        <span class="pricing-badge" style="background: var(--primary); color: #fff;">Версия 1.0 (Старт · 12 недель)</span>
+                        <div style="font-size: 20px; font-weight: 800; color: var(--primary-dark); margin-top: 4px;">Каталог + Выгрузка из 1С</div>
+                        <ul class="card-bullet-list">
+                            <li>Автоматическая синхронизация 200+ SKU и цен из 1С</li>
+                            <li>Публичный каталог с удобными фильтрами</li>
+                            <li>Формы отправки оптовых заявок менеджерам</li>
+                            <li>Раздел розничного магазина с ссылками на VK/TG</li>
+                            <li>Готовая схема данных под пользователей и заказы</li>
+                        </ul>
+                        <div style="font-size: 13px; color: var(--text-muted); margin-top: auto; border-top: 1px dashed var(--border); padding-top: 10px;">
+                            <strong>Итог:</strong> Быстрый запуск оптовых продаж с актуальными ценами за разумный бюджет.
+                        </div>
+                    </div>
+
+                    <div class="pricing-card" style="border-color: var(--accent);">
+                        <span class="pricing-badge target">Версия 2.0 (Будущий этап)</span>
+                        <div style="font-size: 20px; font-weight: 800; color: var(--accent); margin-top: 4px;">Корзина, ЛК и Онлайн-сделки</div>
+                        <ul class="card-bullet-list">
+                            <li><strong>Личный кабинет дилера:</strong> индивидуальные договорные цены, история отгрузок, счета</li>
+                            <li><strong>Оптовая корзина:</strong> расчет квантов (паллеты/коробки), минимальный объем заказа</li>
+                            <li><strong>Двусторонний обмен с 1С:</strong> создание заказов покупателя прямо в 1С</li>
+                            <li><strong>Кабинет HoReCa:</strong> регулярные повторные заказы по шаблону в 1 клик</li>
+                        </ul>
+                        <div style="font-size: 13px; color: var(--text-muted); margin-top: auto; border-top: 1px dashed var(--border); padding-top: 10px;">
+                            <strong>Итог:</strong> Полная автоматизация повторных оптовых продаж без переписывания сайта.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide-footer">
+                    <div>Архитектурная преемственность: структура каталога и API проектируются сразу под v2.0</div>
+                    <div>Инвестиции в v1.0 сохраняются в полном объёме</div>
+                </div>
+            </section>
+
+            <!-- SLIDE 7: СРАВНЕНИЕ СТОИМОСТИ И ПАКЕТОВ -->
+            <section class="slide" id="slide-7">
+                <div class="slide-tag">Бюджет и сравнение вариантов</div>
+                <h2 class="slide-heading">Сравнение: «Визитка» vs «Каталог с 1С»</h2>
+                <p class="slide-lead">Расчёт основан на ставке 1 500 ₽/час с учётом 3-кратного ускорения разработки за счёт специализированных AI-агентов.</p>
+
+                <div class="grid-2">
+                    <!-- Option 1 -->
+                    <div class="pricing-card">
+                        <span class="pricing-badge basic">Базовый вариант</span>
+                        <div class="price-val">50 000 ₽</div>
+                        <div style="font-weight: 700; color: #4a5568;">Сайт-визитка (ручной ввод)</div>
+                        <ul class="card-bullet-list">
+                            <li>Простая посадочная страница</li>
+                            <li>Статичный список товаров</li>
+                            <li style="color:#c53030;">❌ <strong>Нет связи с 1С</strong> — цены нужно забивать вручную</li>
+                            <li style="color:#c53030;">❌ <strong>Цены быстро устаревают</strong> — риск дезинформации</li>
+                            <li style="color:#c53030;">❌ Менеджеры продолжают вручную слать Excel-прайсы</li>
+                            <li>Срок: 2–3 недели</li>
+                        </ul>
+                        <div style="font-size: 12px; color: var(--text-muted); margin-top: auto; padding-top: 8px;">
+                            Подходит только для формального присутствия в сети.
+                        </div>
+                    </div>
+
+                    <!-- Option 2 -->
+                    <div class="pricing-card recommended">
+                        <span class="pricing-badge target">Рекомендуемый выбор</span>
+                        <div class="price-val" style="color: var(--accent);">150 000 ₽</div>
+                        <div style="font-weight: 700; color: var(--primary);">Каталог + Автосинхронизация с 1С</div>
+                        <ul class="card-bullet-list">
+                            <li><strong>Полноценный B2B-каталог на 200+ SKU</strong></li>
+                            <li><strong>Автоматическая выгрузка номенклатуры и цен из 1С</strong></li>
+                            <li>Умные фильтры по видам рыбы и типам заморозки</li>
+                            <li>Экономия до 40 часов рабочего времени менеджеров в месяц</li>
+                            <li>Раздел розничного магазина с ссылками на VK/TG</li>
+                            <li>Архитектурная готовность к Корзине и ЛК (версия 2.0)</li>
+                            <li>Срок: 12 недель (с поэтапной оплатой)</li>
+                        </ul>
+                        <div style="font-size: 12px; color: var(--success); font-weight: 700; margin-top: auto; padding-top: 8px;">
+                            ⚡ Окупается за счёт экономии времени сотрудников и роста оптовых лидов.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide-footer">
+                    <div>График оплаты: 45 000 ₽ (аванс 30%) ➔ 45 000 ₽ (дизайн и каталог) ➔ 35 000 ₽ (1С) ➔ 25 000 ₽ (релиз)</div>
+                    <div>Без рисков для заказчика</div>
+                </div>
+            </section>
+
+            <!-- SLIDE 8: СЛЕДУЮЩИЕ ШАГИ -->
+            <section class="slide" id="slide-8">
+                <div class="slide-tag success">План действий</div>
+                <h2 class="slide-heading">План запуска проекта (12 недель)</h2>
+                <p class="slide-lead">Все подготовительные материалы готовы для старта.</p>
+
+                <div class="grid-3">
+                    <div class="feature-card">
+                        <div class="card-icon">1️⃣</div>
+                        <h3 class="card-title">Недели 1–3: Запуск и ТЗ</h3>
+                        <p class="card-desc">Согласование формата выгрузки из 1С (CommerceML / REST), утверждение финального списка категорий рыбы.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="card-icon orange">2️⃣</div>
+                        <h3 class="card-title">Недели 4–8: Каталог и 1С</h3>
+                        <p class="card-desc">Верстка адаптивного каталога по утвержденным мокапам, настройка шлюза обмена данными с базой 1С.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="card-icon green">3️⃣</div>
+                        <h3 class="card-title">Недели 9–12: Тест и Запуск</h3>
+                        <p class="card-desc">Проверка корректности цен и остатков, тестирование форм заявок, запуск на рабочем домене.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card" style="margin-top: 20px; text-align: center; background: #ffffff; border: 2px solid var(--primary);">
+                    <h3 style="font-size: 20px; color: var(--primary); margin-bottom: 8px;">ООО «Океан» · г. Иваново</h3>            
+                </div>
+
+                <div class="slide-footer">
+                    <div>ООО «Океан» · 2026 · Проект цифровизации оптовых продаж</div>
+                    <div>Готовность аналитики и мокапов: 100%</div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Presentation Engine Script -->
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 8;
+
+        function updateSlide() {
+            document.querySelectorAll('.slide').forEach((slide, idx) => {
+                if (idx + 1 === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            document.getElementById('slideIndicator').innerText = `Слайд ${currentSlide} из ${totalSlides}`;
+            document.getElementById('prevBtn').disabled = (currentSlide === 1);
+            document.getElementById('nextBtn').innerText = (currentSlide === totalSlides) ? 'В начало ↺' : 'Вперёд →';
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+            } else {
+                currentSlide = 1;
+            }
+            updateSlide();
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    alert(`Ошибка полноэкранного режима: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                e.preventDefault();
+                prevSlide();
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                currentSlide = 1;
+                updateSlide();
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                currentSlide = totalSlides;
+                updateSlide();
+            } else if (e.key === 'f' || e.key === 'F') {
+                toggleFullscreen();
+            }
+        });
+
+        // Touch swipe support
+        let touchstartX = 0;
+        let touchendX = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            if (touchendX < touchstartX - 50) nextSlide();
+            if (touchendX > touchstartX + 50) prevSlide();
+        });
+
+        // Init
+        updateSlide();
+    </script>
+</body>
+</html>
