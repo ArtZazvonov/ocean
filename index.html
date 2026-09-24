@@ -538,13 +538,113 @@
             background: #f2faff;
         }
 
-        @media (max-width: 900px) {
-            .slide { padding: 24px; }
-            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-            .cover-title { font-size: 30px; }
-            .slide-heading { font-size: 22px; }
-            .cover-metrics { flex-direction: column; gap: 14px; }
+
+        /* Enhanced Responsive Design for Presentation */
+        .slide-deck {
+            min-height: 580px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
+
+        .cover-title {
+            font-size: clamp(26px, 5vw, 44px);
+        }
+
+        .cover-subtitle {
+            font-size: clamp(14px, 3vw, 18px);
+        }
+
+        .slide-heading {
+            font-size: clamp(20px, 4vw, 32px);
+            line-height: 1.25;
+        }
+
+        .slide-lead {
+            font-size: clamp(13px, 2.5vw, 16px);
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .presentation-bar {
+                padding: 10px 14px;
+            }
+            .brand-sub {
+                display: none;
+            }
+            .brand-title {
+                font-size: 15px;
+            }
+            .deck-controls {
+                gap: 6px;
+            }
+            .ctrl-btn {
+                padding: 6px 10px;
+                font-size: 13px;
+            }
+            .slide-counter {
+                font-size: 12px;
+                padding: 4px 8px;
+            }
+            .slide-viewport {
+                padding: 12px 10px;
+            }
+            .slide-deck {
+                min-height: auto;
+                max-height: none;
+                border-radius: 12px;
+            }
+            .slide {
+                padding: 24px 18px;
+            }
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .cover-metrics {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .metric-card {
+                padding: 14px;
+            }
+            .preview-frame {
+                padding: 20px 14px;
+            }
+            .pricing-card {
+                padding: 20px 16px;
+            }
+            .retail-banner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                padding: 14px;
+            }
+            .slide-footer {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+                font-size: 11px;
+                padding-top: 16px;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .ctrl-btn.fs-btn {
+                display: none;
+            }
+            .slide-tag {
+                font-size: 10px;
+                padding: 4px 8px;
+                margin-bottom: 10px;
+            }
+            .price-val {
+                font-size: 28px;
+            }
+            .card-title {
+                font-size: 16px;
+            }
+        }
+
 
         @media print {
             @page {
@@ -1005,19 +1105,30 @@
             }
         });
 
-        // Touch swipe support
+
+        // Improved Touch navigation with vertical scroll protection
         let touchstartX = 0;
+        let touchstartY = 0;
         let touchendX = 0;
+        let touchendY = 0;
 
         document.addEventListener('touchstart', e => {
             touchstartX = e.changedTouches[0].screenX;
-        });
+            touchstartY = e.changedTouches[0].screenY;
+        }, {passive: true});
 
         document.addEventListener('touchend', e => {
             touchendX = e.changedTouches[0].screenX;
-            if (touchendX < touchstartX - 50) nextSlide();
-            if (touchendX > touchstartX + 50) prevSlide();
-        });
+            touchendY = e.changedTouches[0].screenY;
+            const diffX = touchendX - touchstartX;
+            const diffY = touchendY - touchstartY;
+            // Trigger slide change only on distinct horizontal swipe
+            if (Math.abs(diffX) > 60 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
+                if (diffX < 0) nextSlide();
+                if (diffX > 0) prevSlide();
+            }
+        }, {passive: true});
+
 
         // Init
         updateSlide();
