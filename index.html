@@ -40,7 +40,7 @@
             overflow-x: hidden;
         }
 
-        /* Top Bar */
+        /* Top Presentation Bar */
         .presentation-bar {
             background: #ffffff;
             border-bottom: 1px solid var(--border);
@@ -51,65 +51,86 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            gap: 12px;
         }
 
         .brand-box {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            min-width: 0;
+            flex-shrink: 1;
         }
 
         .brand-logo {
-            font-size: 24px;
+            font-size: 20px;
             background: var(--primary-light);
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
         }
 
         .brand-title {
             font-weight: 800;
-            font-size: 18px;
+            font-size: 16px;
             color: var(--primary);
-            letter-spacing: -0.5px;
+            letter-spacing: -0.3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .brand-sub {
             font-size: 12px;
             color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .deck-controls {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
+            flex-shrink: 0;
         }
 
         .slide-counter {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             color: var(--primary);
             background: var(--primary-light);
-            padding: 6px 14px;
-            border-radius: 20px;
+            padding: 6px 12px;
+            border-radius: 16px;
+            white-space: nowrap;
         }
 
         .ctrl-btn {
             background: #ffffff;
             border: 1px solid var(--border);
             color: var(--text-main);
-            padding: 8px 16px;
+            padding: 7px 14px;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            gap: 4px;
             transition: all 0.2s ease;
+            white-space: nowrap;
         }
 
         .ctrl-btn:hover {
@@ -127,6 +148,60 @@
         .ctrl-btn.primary:hover {
             background: var(--accent-hover);
             border-color: var(--accent-hover);
+        }
+
+        @media (max-width: 768px) {
+            .presentation-bar {
+                padding: 10px 14px;
+            }
+            .brand-sub {
+                display: none;
+            }
+            .brand-title {
+                font-size: 14px;
+            }
+            .brand-logo {
+                width: 30px;
+                height: 30px;
+                font-size: 17px;
+            }
+            .deck-controls {
+                gap: 6px;
+            }
+            .ctrl-btn {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+            .slide-counter {
+                padding: 4px 8px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .presentation-bar {
+                padding: 8px 10px;
+                gap: 8px;
+            }
+            .brand-title {
+                font-size: 13px;
+            }
+            .brand-logo {
+                display: none;
+            }
+            .slide-word,
+            .btn-text {
+                display: none;
+            }
+            .ctrl-btn {
+                padding: 6px 9px;
+                font-size: 13px;
+                min-width: 32px;
+            }
+            .slide-counter {
+                padding: 4px 6px;
+                font-size: 11px;
+            }
         }
 
         /* Slide Viewport */
@@ -695,18 +770,23 @@
     <header class="presentation-bar">
         <div class="brand-box">
             <div class="brand-logo">🐟</div>
-            <div>
-                <div class="brand-title">ООО «Океан» · B2B Каталог</div>
-                <div class="brand-sub">Стратегия проекта: Версия 1.0 с 1С (12 недель) & Роадмап v2.0</div>
+            <div class="brand-text">
+                <div class="brand-title">ОКЕАН · B2B</div>
+                <div class="brand-sub">Стратегия B2B-каталога с интеграцией 1С</div>
             </div>
         </div>
 
         <div class="deck-controls">
-            <span class="slide-counter" id="slideIndicator">Слайд 1 из 8</span>
-            <button class="ctrl-btn" onclick="prevSlide()" id="prevBtn" title="Предыдущий слайд (Стрелка влево)">← Назад</button>
-            <button class="ctrl-btn primary" onclick="nextSlide()" id="nextBtn" title="Следующий слайд (Стрелка вправо или Пробел)">Вперёд →</button>
-            <button class="ctrl-btn" onclick="toggleFullscreen()" title="Полноэкранный режим">⛶ Экран</button>
-            <a href="client-presentation.pdf" download class="ctrl-btn" title="Скачать презентацию в PDF" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">📥 PDF</a>
+            <span class="slide-counter" id="slideIndicator"><span class="slide-word">Слайд </span>1 / 8</span>
+            <button class="ctrl-btn prev-btn" onclick="prevSlide()" id="prevBtn" title="Предыдущий слайд (Стрелка влево)">
+                <span class="btn-arrow">←</span><span class="btn-text"> Назад</span>
+            </button>
+            <button class="ctrl-btn primary next-btn" onclick="nextSlide()" id="nextBtn" title="Следующий слайд (Стрелка вправо или Пробел)">
+                <span class="btn-text">Вперёд </span><span class="btn-arrow">→</span>
+            </button>
+            <button class="ctrl-btn fs-btn" onclick="toggleFullscreen()" title="Полноэкранный режим (F)">
+                <span class="btn-arrow">⛶</span><span class="btn-text"> Экран</span>
+            </button>
         </div>
     </header>
 
@@ -1051,9 +1131,26 @@
                 }
             });
 
-            document.getElementById('slideIndicator').innerText = `Слайд ${currentSlide} из ${totalSlides}`;
-            document.getElementById('prevBtn').disabled = (currentSlide === 1);
-            document.getElementById('nextBtn').innerText = (currentSlide === totalSlides) ? 'В начало ↺' : 'Вперёд →';
+            const slideIndicator = document.getElementById('slideIndicator');
+            if (slideIndicator) {
+                slideIndicator.innerHTML = `<span class="slide-word">Слайд </span>${currentSlide} / ${totalSlides}`;
+            }
+
+            const prevBtn = document.getElementById('prevBtn');
+            if (prevBtn) {
+                prevBtn.disabled = (currentSlide === 1);
+                prevBtn.style.opacity = (currentSlide === 1) ? '0.4' : '1';
+                prevBtn.style.cursor = (currentSlide === 1) ? 'default' : 'pointer';
+            }
+
+            const nextBtn = document.getElementById('nextBtn');
+            if (nextBtn) {
+                if (currentSlide === totalSlides) {
+                    nextBtn.innerHTML = '<span class="btn-text">В начало </span><span class="btn-arrow">↺</span>';
+                } else {
+                    nextBtn.innerHTML = '<span class="btn-text">Вперёд </span><span class="btn-arrow">→</span>';
+                }
+            }
         }
 
         function nextSlide() {
